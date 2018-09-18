@@ -1,0 +1,28 @@
+* html, body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 15px;
+  font-family: Montserrat;
+}
+
+.header {
+  font-size: 3em;
+  text-align: center;
+}
+
+.wassup-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 5em 1em 5em;
+}
+
+.wassup-list {
+  list-style: none;
+  margin: 0 5em 0 2.5em;
+}
+
+.wassup-row {
+  border: 1px solid black;
+  margin: 0.5em;
+  padding: 1em;
+}
