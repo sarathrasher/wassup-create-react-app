@@ -6,7 +6,7 @@ import WassupPage from './wassup-page';
 import Main from './main'
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom';
-import { createStore } from 'redux';
+import { store } from './index'
 import { Provider } from 'react-redux';
 
 // Reminder of steps:
@@ -36,31 +36,6 @@ const wassups = [
     id: 3,
   },
 ]
-
-let initialState = {
-  wassups: wassups,
-  newWassupValue: '',
-  newUserValue: '',
-};
-
-let reducer = (oldState, action) => {
-  if (action.type === 'ADD_WASSUP') {
-    return {
-      ...oldState,
-      id: generateId(),
-      user: oldState.newWassupUser,
-      content: oldState.newWassupContent,
-    } 
-  } else {
-    return oldState;
-  }
-}
-
-let store = createStore(
-  reducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&window.__REDUX_DEVTOOLS_EXTENSION__()
-)
 
 let app = 
   <Provider store={store}>
@@ -103,7 +78,7 @@ let Router = (props) =>
     </div>
   </HashRouter>
 
-export default Router;
+export default Router; 
 
 ReactDOM.render(app, document.getElementById('root'));
 registerServiceWorker();
