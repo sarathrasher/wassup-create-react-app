@@ -1,8 +1,26 @@
 import { createStore } from 'redux';
-import { reducer } from './reducer'
+import reducer from './reducer'
+
+// const wassups = [
+//   { date: new Date(),
+//     content: "Blargh Blargh Blargh",
+//     user: 'Ptera🦆tal',
+//     id: 1,
+//   },
+//   { date: new Date(),
+//     content: "It's hard to know how to React to this",
+//     user: 'Tyranasaurus 🐤',
+//     id: 2,
+//   },
+//   { date: new Date(),
+//     content: "Re🦆🦆",
+//     user: 'Veloci🐥tor',
+//     id: 3,
+//   },
+// ]
 
 let initialState = {
-  wassups: wassups,
+  wassups: [],
   newWassupValue: '',
   newUserValue: '',
 };

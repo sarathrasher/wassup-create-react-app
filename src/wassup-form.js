@@ -6,8 +6,9 @@ let WassupForm = (props) =>
     className='wassup-form'
     onSubmit={(event) => {
       event.preventDefault();
-      props.addWassup(props.newWassupValue, props.newUserValue);
-
+      props.dispatch({ 
+        type: 'ADD_WASSUP'
+      })
     } }
     >
     <textarea 
@@ -16,7 +17,10 @@ let WassupForm = (props) =>
       type="text"
       value={props.newWassupValue}
       onChange={(event) => {
-        props.updateWassupInput(event.target.value, props.newUserValue)
+        props.dispatch({ 
+          type: 'HANDLE_WASSUP_INPUT',
+          newWassupValue: event.target.value
+      })
       }
     } 
     />
@@ -26,9 +30,11 @@ let WassupForm = (props) =>
       type="text"
       value={props.newUserValue} 
       onChange={(event) => {
-          props.updateWassupInput(props.newWassupValue, event.target.value)
-        }
-      }
+      props.dispatch({ 
+        type: 'HANDLE_USER_INPUT',
+        newUserValue: event.target.value
+      })
+    } } 
     />, 
     <button className='submit-button' type='submit'>Post</button>
   </form>

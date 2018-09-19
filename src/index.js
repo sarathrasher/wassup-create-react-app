@@ -6,7 +6,7 @@ import WassupPage from './wassup-page';
 import Main from './main'
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom';
-import { store } from './index'
+import store from './store'
 import { Provider } from 'react-redux';
 
 // Reminder of steps:
@@ -15,27 +15,6 @@ import { Provider } from 'react-redux';
 // 2. Find one class component that was storing wassups in state
 // 3. Move that state into a Redux store
 // 4. Connect that component to the wassups in the Redux store
-
-let generateId = () =>
-  Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
-
-const wassups = [
-  { date: new Date(),
-    content: "Blargh Blargh Blargh",
-    user: 'Ptera🦆tal',
-    id: 1,
-  },
-  { date: new Date(),
-    content: "It's hard to know how to React to this",
-    user: 'Tyranasaurus 🐤',
-    id: 2,
-  },
-  { date: new Date(),
-    content: "Re🦆🦆",
-    user: 'Veloci🐥tor',
-    id: 3,
-  },
-]
 
 let app = 
   <Provider store={store}>

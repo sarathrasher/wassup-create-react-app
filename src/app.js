@@ -3,36 +3,31 @@ import Router from './index'
 import './app.css';
 import { connect } from 'react-redux';
 
-let generateId = () =>
-  Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
-
 class App extends Component {
-// componentDidMount() {
-//   fetch('http://0.tcp.ngrok.io:11140/wassups.json')
-//   .then(res => res.json())
-//   .then(wassups => {
-//     this.setState({
-//       wassups: wassups
-//   });
-// });
-// };
+componentDidMount() {
+  fetch('http://0.tcp.ngrok.io:17762/wassups.json')
+  .then(res => res.json())
+  .then(wassups => {
+    this.props.dispatch({
+      type: 'FETCH_WASSUPS',
+      wassups
+    })
+  });
+};
 
 render() {
-  let addWassup = (newWassupContent, newWassupUser) => {
-    this.setState({
-      wassups: [
-        {
-          id: generateId(),
-          user: newWassupUser,
-          content: newWassupContent,
-        }
-      ].concat(this.state.wassups)
-    })
-  }
-  return <Router {...this.props} addWassup={addWassup} />
+  return <Router {...this.props} />
   }
 }
 
-let SmartApp = connect(state => state)(App);
+let mapStateToProps = function(state) {
+  return {
+    wassups: state.wassups,
+    newWassupValue: '',
+    newUserValue: '',
+  }
+}
 
-export default SmartApp;
+let ConnectedApp = connect(mapStateToProps)(App)
+
+export default ConnectedApp;
